@@ -179,7 +179,7 @@ public class LdaTrainer implements GenericTool {
       // sampling process may be long, and opening a HDFS file for too long time
       // may cause strange IO problem, as observed in our practice.
       likelihoodWriter = new OutputStreamWriter(
-          fs.create(new Path(workingDir, "likelihood"), false /* append */),
+          fs.append(new Path(workingDir, "likelihood")),
           "UTF-8");
       likelihoodWriter.append(Double.toString(likelihood));
       likelihoodWriter.append("\n");
